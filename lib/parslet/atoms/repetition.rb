@@ -41,7 +41,7 @@ class Parslet::Atoms::Repetition < Parslet::Atoms::Base
       accum << value
       
       # If we're not greedy (max is defined), check if that has been reached. 
-      return succ(accum) if max && occ>=max
+      return succ(accum) if (max && occ>=max) || source.chars_left == 0
     end
     
     # Last attempt to match parslet was a failure, failure reason in break_on.
